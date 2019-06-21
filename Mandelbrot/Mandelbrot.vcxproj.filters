@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Application">
+      <UniqueIdentifier>{3534a43a-f526-4377-91ef-8b15597980c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GL">
+      <UniqueIdentifier>{ec674475-b233-4cc6-a4fb-c9a4361815a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{59a3d760-e944-47c5-a1e5-bc8e2d16f8fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{33e53553-3ee6-4c12-879b-8ca3490852ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{b6126e12-a1c0-4ec5-a61e-a559f9be9436}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{81bfb1d6-92c6-4271-9fe0-2f03650827b3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\App\WinapiApp.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinMain.cpp" />
+    <ClCompile Include="..\App\Console.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\App\Log.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\App\Logging.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GL\src\glad.c">
+      <Filter>GL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GL\src\glad_wgl.c">
+      <Filter>GL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graphics\OpenGL_Util.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graphics\Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graphics\Quad.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FractalGenerator.cpp" />
+    <ClCompile Include="..\Utils\Stopwatch.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\App\WinapiApp.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\StdAfx.h" />
+    <ClInclude Include="..\App\Console.hpp">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\App\Log.hpp">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\App\Logging.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GL\include\glad\glad.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GL\include\glad\glad_wgl.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Graphics\OpenGL_Util.hpp">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Graphics\Shader.hpp">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Graphics\Quad.hpp">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Math\Vector.inl">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FractalGenerator.h" />
+    <ClInclude Include="..\Utils\Stopwatch.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Util.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\QuadVertex.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Resources\MandelbrotFragment.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
