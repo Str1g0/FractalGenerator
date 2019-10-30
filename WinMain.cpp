@@ -2,11 +2,6 @@
 #error "Only Windows is supported!"
 #endif
 
-//static_assert(__cplusplus > 199711L, "Error, doesn't support c++11")
-
-//if this fails the compiler cannot run the program
-constexpr bool does_support_constexpr_is_cpp_11_or_higher = true;
-
 #include <FractalGenerator.h>
 #include "Utils/Stopwatch.h"
 
@@ -14,9 +9,10 @@ constexpr bool does_support_constexpr_is_cpp_11_or_higher = true;
 
 LRESULT _stdcall MainWindowProc(HWND winHandle, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	static constexpr auto DEF_ZOOM		= 1.f;
-	static constexpr auto DEF_OFF_X		= 0.1f;
-	static constexpr auto DEF_OFF_Y		= 0.1f;
+	static constexpr auto DEF_ZOOM			= 1.f;
+	static constexpr auto DEF_ZOOM_UNIT		= .01f;
+	static constexpr auto DEF_OFF_X			= .1f;
+	static constexpr auto DEF_OFF_Y			= .1f;
 
 	static float		zoomUnit		= DEF_ZOOM;
 	static math::vec2f	offsetUnit		= { DEF_OFF_X, DEF_OFF_Y };
@@ -37,16 +33,16 @@ LRESULT _stdcall MainWindowProc(HWND winHandle, UINT msg, WPARAM wParam, LPARAM 
 						std::exit(EXIT_SUCCESS);
 
 					case VK_LEFT:
-						FractalGenerator::GetInstance()->SetOffsetX(-offsetUnit.x * zoomUnit, true);
+						FractalGenerator::GetInstance()->SetOffsetX(-offsetUnit.x * std::abs(zoomUnit), true);
 						break;
 					case VK_RIGHT:
-						FractalGenerator::GetInstance()->SetOffsetX(offsetUnit.x * zoomUnit, true);
+						FractalGenerator::GetInstance()->SetOffsetX(offsetUnit.x * std::abs(zoomUnit), true);
 						break;
 					case VK_DOWN:
-						FractalGenerator::GetInstance()->SetOffsetY(-offsetUnit.y * zoomUnit, true);
+						FractalGenerator::GetInstance()->SetOffsetY(-offsetUnit.y * std::abs(zoomUnit), true);
 						break;
 					case VK_UP:
-						FractalGenerator::GetInstance()->SetOffsetY(offsetUnit.y * zoomUnit, true);
+						FractalGenerator::GetInstance()->SetOffsetY(offsetUnit.y * std::abs(zoomUnit), true);
 						break;
 
 					case VK_SHIFT:
@@ -56,13 +52,13 @@ LRESULT _stdcall MainWindowProc(HWND winHandle, UINT msg, WPARAM wParam, LPARAM 
 						break;
 
 					case VK_ADD:
-						zoomUnit *= 1.2f;
-						FractalGenerator::GetInstance()->SetZoom(zoomUnit, true);
+						zoomUnit += DEF_ZOOM_UNIT;
+						FractalGenerator::GetInstance()->SetZoom(zoomUnit);
 						break;
 
 					case VK_SUBTRACT:
-						zoomUnit *= 0.85f;
-						FractalGenerator::GetInstance()->SetZoom(-zoomUnit, true);
+						zoomUnit += DEF_ZOOM_UNIT;
+						FractalGenerator::GetInstance()->SetZoom(-zoomUnit);
 						break;
 
 					case VK_HOME:
@@ -85,14 +81,14 @@ LRESULT _stdcall MainWindowProc(HWND winHandle, UINT msg, WPARAM wParam, LPARAM 
 			{
 				if (HIWORD(wParam) == 120)
 				{
-					zoomUnit *= 1.2f;
-					FractalGenerator::GetInstance()->SetZoom(zoomUnit, true);
+					zoomUnit += DEF_ZOOM_UNIT;
+					FractalGenerator::GetInstance()->SetZoom(zoomUnit);
 				}
 
 				else if (HIWORD(wParam) >= -120)
 				{
-					zoomUnit *= 0.8f;
-					FractalGenerator::GetInstance()->SetZoom(-zoomUnit, true);
+					zoomUnit -= DEF_ZOOM_UNIT;
+					FractalGenerator::GetInstance()->SetZoom(zoomUnit);
 				}
 			}
 		}

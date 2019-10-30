@@ -204,9 +204,10 @@ void FractalGenerator::SetOffsetY(float value, bool isOffset)
 
 void FractalGenerator::SetZoom(float value, bool isOffset)
 {
-	if (m_zoom + value <= 0) return;
-
 	LOG_INFO(TAG, "Zoom changed: %f", m_zoom);
+
+	if (isOffset && ((value + m_zoom) <= 0)) return;
+	else if (value <= 0) return;
 
 	isOffset ?
 		m_zoom += value :
@@ -263,20 +264,20 @@ LRESULT FractalControls::ControlProc(HWND handle, UINT msg, WPARAM wparam, LPARA
 	{
 		case WM_CREATE:
 		{
-			auto loc = PlaceControl(1, 1);
-			lbl_iter = CreateWindow("Static", "Iterations", WS_CHILD | WS_VISIBLE | WS_BORDER,
-									loc.label.x, loc.label.y, 100, 20, handle, (HMENU)-1, NULL, NULL);
+			//auto loc = PlaceControl(1, 1);
+			//lbl_iter = CreateWindow("Static", "Iterations", WS_CHILD | WS_VISIBLE | WS_BORDER,
+			//						loc.label.x, loc.label.y, 100, 20, handle, (HMENU)-1, NULL, NULL);
 
-			btn_iter = CreateWindow("EDIT", "Iterations", WS_CHILD | WS_VISIBLE | ES_NUMBER | WS_BORDER,
-				loc.control.x, loc.control.y, 100, 20, handle, (HMENU)-1, NULL, NULL);
-			
-			loc = PlaceControl(1, 2);
+			//btn_iter = CreateWindow("EDIT", "Iterations", WS_CHILD | WS_VISIBLE | ES_NUMBER | WS_BORDER,
+			//	loc.control.x, loc.control.y, 100, 20, handle, (HMENU)-1, NULL, NULL);
+			//
+			//loc = PlaceControl(1, 2);
 
-			HWND lbl_iter1 = CreateWindow("Static", "Iterations", WS_CHILD | WS_VISIBLE | WS_BORDER,
-				loc.label.x, loc.label.y, 100, 20, handle, (HMENU)-1, NULL, NULL);
+			//HWND lbl_iter1 = CreateWindow("Static", "Iterations", WS_CHILD | WS_VISIBLE | WS_BORDER,
+			//	loc.label.x, loc.label.y, 100, 20, handle, (HMENU)-1, NULL, NULL);
 
-			HWND btn_iter2 = CreateWindow("EDIT", "Iterations", WS_CHILD | WS_VISIBLE | ES_NUMBER | WS_BORDER,
-				loc.control.x, loc.control.y, 100, 20, handle, (HMENU)-1, NULL, NULL);
+			//HWND btn_iter2 = CreateWindow("EDIT", "Iterations", WS_CHILD | WS_VISIBLE | ES_NUMBER | WS_BORDER,
+			//	loc.control.x, loc.control.y, 100, 20, handle, (HMENU)-1, NULL, NULL);
 
 			break;
 		}

@@ -32,7 +32,7 @@ class FractalGenerator:
 	static constexpr auto DEF_ZOOM	=  2.3f;
 	static constexpr auto DEF_OFF_X = -1.7f;
 	static constexpr auto DEF_OFF_Y = -1.2f;
-	static constexpr auto DEF_ITER  =  300u;
+	static constexpr auto DEF_ITER  =  600u;
 
 	static constexpr math::vec2f DEF_JULIA = { 0.285f, 0.01f };
 
